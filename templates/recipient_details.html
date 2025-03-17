@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Dynamic Recipient Details Form -->
+<div class="form-container">
+    <h2 class="mb-4">Enter Recipient Details</h2>
+    <form method="POST">
+        {% for i in range(num_recipients) %}
+        <div class="recipient-form">
+            <h5>Recipient {{ i+1 }}</h5>
+            
+            <!-- Email Input -->
+            <div class="mb-3">
+                <label class="form-label">Email:</label>
+                <input type="email" name="email_{{ i }}" class="form-control" required>
+            </div>
+            
+            <!-- Product Information -->
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <label class="form-label">Product ID:</label>
+                    <input type="text" name="product_id_{{ i }}" class="form-control" required>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Product Name:</label>
+                    <input type="text" name="product_name_{{ i }}" class="form-control" required>
+                </div>
+            </div>
+            
+            <!-- Delivery and Payment Info -->
+            <div class="row g-3 mt-2">
+                <div class="col-md-4">
+                    <label class="form-label">Delivery Status:</label>
+                    <select name="delivery_status_{{ i }}" class="form-select" required>
+                        <option value="Shipped">Shipped</option>
+                        <option value="Out for Delivery">Out for Delivery</option>
+                        <option value="Delivered">Delivered</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Payment Method:</label>
+                    <select name="payment_method_{{ i }}" class="form-select" required>
+                        <option value="Credit Card">Credit Card</option>
+                        <option value="PayPal">PayPal</option>
+                        <option value="COD">COD</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Delivery Date:</label>
+                    <div class="input-group">
+                        <!-- Date Components -->
+                        <input type="number" name="delivery_day_{{ i }}" 
+                               class="form-control" placeholder="Day" min="1" max="31" required>
+                        <input type="number" name="delivery_month_{{ i }}" 
+                               class="form-control" placeholder="Month" min="1" max="12" required>
+                        <input type="number" name="delivery_year_{{ i }}" 
+                               class="form-control" placeholder="Year" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-success">Send Emails</button>
+    </form>
+</div>
+{% endblock %}

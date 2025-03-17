@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- OTP Verification Interface -->
+<div class="form-container">
+    <h2 class="mb-4">Verify OTPs</h2>
+    <form method="POST">
+        {% for notification in notifications %}
+        <div class="recipient-form mb-3">
+            <h5>{{ notification.email }}</h5>
+            <div class="mb-3">
+                <label class="form-label">Enter OTP:</label>
+                <!-- OTP Input Field -->
+                <input type="number" name="otp_{{ loop.index0 }}" 
+                       class="form-control" required>
+            </div>
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Verify OTPs</button>
+    </form>
+</div>
+{% endblock %}

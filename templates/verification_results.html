@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Verification Results Display -->
+<div class="form-container">
+    <h2 class="mb-4">Verification Results</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Verification Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for result in results %}
+            <!-- Color-coded rows based on status -->
+            <tr class="{{ 'table-success' if result.status == 'Valid' else 'table-danger' }}">
+                <td>{{ result.email }}</td>
+                <td>{{ result.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <!-- Navigation to restart process -->
+    <a href="{{ url_for('index') }}" class="btn btn-secondary">Start Over</a>
+</div>
+{% endblock %}
