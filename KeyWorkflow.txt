@@ -1,1 +1,58 @@
+Key Workflow Explanation:
 
+1. Initialization
+
+    User starts at home page (/) and enters number of recipients
+
+    Session stores recipient count for multi-step process
+
+2. Data Collection
+
+    Dynamic form generation based on recipient count
+
+    Collects product details, delivery info, and payment method
+
+    Generates unique OTP for each recipient
+
+3. Email Delivery
+
+    Establishes secure SMTP connection
+
+    Sends personalized emails with delivery details and OTP
+
+    Stores OTPs in session for verification phase
+
+4. OTP Verification
+
+    Presents OTP input fields for each recipient
+
+    Compares user input with generated OTPs
+
+    Provides color-coded results table
+
+5. Security Considerations
+
+    Session management for multi-step flow
+
+    Encrypted SMTP connections (TLS)
+
+    Server-side validation of all inputs
+
+    Flash messages for user feedback
+
+    Proper connection cleanup in finally block
+
+To Enhance Security:
+
+    Store credentials in environment variables
+
+    Add CSRF protection
+
+    Implement rate limiting
+
+    Add user authentication
+
+    Use HTTPS in production
+
+This implementation provides a complete workflow from email composition to OTP verification 
+with proper error handling and user feedback.
